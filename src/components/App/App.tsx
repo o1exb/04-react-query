@@ -46,9 +46,6 @@ export default function App() {
     }
   }, [isLoading, data]);
 
-  const movies = data?.results ?? [];
-  const totalPages = data?.total_pages ?? 0;
-
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
