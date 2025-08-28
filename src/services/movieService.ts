@@ -1,5 +1,12 @@
 import axios from "axios";
-import type { TMDBSearchResponse } from "../types/movie";
+import type { Movie } from "../types/movie";
+
+export interface TMDBSearchResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
 
 const API = axios.create({
   baseURL: "https://api.themoviedb.org/3",
@@ -14,9 +21,9 @@ export async function searchMovies(
   page: number,
   signal?: AbortSignal
 ): Promise<TMDBSearchResponse> {
-  const res = await API.get("/search/movie", {
+  const res = await API.get<TMDBSearchResponse>("/search/movie", {
     params: { query, page },
     signal,
   });
-  return res.data as TMDBSearchResponse;
+  return res.data;
 }

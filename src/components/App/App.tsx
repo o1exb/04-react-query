@@ -8,8 +8,11 @@ import MovieGrid from "../MovieGrid/MovieGrid";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import MovieModal from "../MovieModal/MovieModal";
-import type { Movie, TMDBSearchResponse } from "../../types/movie";
-import { searchMovies } from "../../services/movieService";
+import {
+  searchMovies,
+  type TMDBSearchResponse,
+} from "../../services/movieService";
+import type { Movie } from "../../types/movie";
 
 export default function App() {
   const [query, setQuery] = useState("");
